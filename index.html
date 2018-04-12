@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SmartGreenHouse Embedded Systems</title>
+    <title>Modern Business - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Home</a>
+        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,8 +44,8 @@
                 Images
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBilder">
-                <a class="dropdown-item" href="portfolio-1-col.html">Bilder vom Gartenhaus</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">Erste Entwürfe</a>
+                <a class="dropdown-item" href="portfolio-1-col.html">Images of Greenhouse</a>
+                <a class="dropdown-item" href="portfolio-2-col.html">First steps</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -55,8 +55,7 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLinks">
                 <a class="dropdown-item" href="https://github.com/LarsBuck/smartgreenhouse.com">Repository</a>
                 <a class="dropdown-item" href="https://www.hochschule-ruhr-west.de/">Hochschule-Ruhr-West</a>
-                <a class="dropdown-item" href="http://hrw-fablab.de/wiki/index.php?title=SGH&action=edit&redlink=1">HRW WIKI</a>
-                <a class="dropdown-item" href="404.html">404</a>           
+                <a class="dropdown-item" href="http://hrw-fablab.de/wiki/index.php?title=SGH&action=edit&redlink=1">HRW WIKI</a>         
               </div>
 			  
             </li>
@@ -88,7 +87,7 @@
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('images/bild8.jpg')">
+          <div class="carousel-item" style="background-image: url('images/Bild2.jpg')">
             <div class="carousel-caption d-none d-md-block">
               <h3>Third Slide</h3>
               <p>This is a description for the third slide.</p>
@@ -106,6 +105,57 @@
       </div>
     </header>
 
+	<!-- Table -->
+	<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  
+  <title>My Chart.js Chart</title>
+</head>
+<body>
+
+  <div class="container">
+    <canvas id="myChart"style='margin: auto; width: 50%;max-width: 800px;margin-top: 10%;margin-bottom: 10%;'></canvas>
+  </div>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Bodenfeuchtigkeit", "Luftfeuchtigkeit", "Pflanzenwachstum", "Licht"],
+        datasets: [{
+            label: 'Measurement Values',
+            data: [12, 19, 3, 5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+    
     <!-- Page Content -->
     <div class="container">
 
