@@ -1,0 +1,16 @@
+#overviewTable th { /* Überschriften*/
+    background-color: #6c757d;
+    color: white;
+}
+.btn-primary{
+    background-color: #6c757d;
+}
+.btn-primary:hover{
+    background-color: lightgray;
+}
+.btn-primary:focus{
+    background-color:gray;
+}
+.btn-primary.active:hover{
+    background-color: lightgray;
+}
