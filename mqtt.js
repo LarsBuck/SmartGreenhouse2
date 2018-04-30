@@ -1,3 +1,20 @@
+var client = mqtt.connect('wss://7ab8d043:4acf899e28d7740c@broker.shiftr.io:443', { //Wichtig wss und port! Sonst keine sichere Verbindung im Browser
+  clientId: 'greenhouse-webapp'
+});
+ 
+client.on('connect', function(){
+   console.log('client has connected!');
+});
+    
+
+var displayNames=["Lightstarttime","Lightstoptime","Lightlevel","LightSwitch","Temperature","Air-humidity","FanSwitch","Soil-humidity","dry target value","humid target value","PumpSwitch"];
+var displayData=["10 uhr","20 uhr","20 Lumen","Off","20°C","60%","Off","50%","70%","60%","Off"]; 
+    
+var sendingNames = ["LightStart","LightStop","dry","humid","LightSwitch","PumpSwitch"];
+//var receivingNames = ["Light","pumpDelay","Temperature","Humiditiy","SoilMoistureContent"];
+var receivingNames  = ["LightStart","LightStop","dry","humid"]; //Nur Test!!
+var sendingData = ["10","Testwert","2°C","2%","5%"];
+var receivingData = new Array(receivingNames.length);  
 
 function setallSubscribers(names,data){
  client.on('message', function(topic, message) {
@@ -8,7 +25,6 @@ function setallSubscribers(names,data){
             data[i]=message.toString();
             }
         }
-        updateTable();
         console.log(data);
  });
     for(i=0;i<names.length;i++){
@@ -16,7 +32,7 @@ function setallSubscribers(names,data){
     } 
 }
 
-function setallPublishers(names,data){
+function setallPublishers(names,data){    
    setInterval(function(){
     for(i = 0; i < names.length; i++){
         client.publish('/smartGreenhouse/Sollwerte/'+names[i], data[i]);
@@ -24,12 +40,16 @@ function setallPublishers(names,data){
   }, 1000);
 }
 
+
+
+
+
 /*
 function setSubscriber(name){
  client.on('message', function(topic, message) {
         $('#data3').text(message.toString());
  });
-      client.subscribe('/smartGreenhouse/Sollwerte/'+name);
+      client.subscribe('/smartGreenhouse/Sollwerte/Tabelle');
 }
 
 function setPublisher(name,data){
