@@ -8,13 +8,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SmartGreenHouse-Wachstum</title>
+    <title>SmartGreenHouse-Temperatur</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
+	  
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	  
+    <!-- MQQT -->
+    <script src="https://assets.shiftr.io/js/mqtt-latest.js"></script>
+    <script src="mqtt.js" charset="utf-8"></script>	  
+	  
+    <!-- Graphen -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
   </head>
 
@@ -67,56 +80,50 @@
 	
 	
 <html>
-<script>
-window.onload = function () {
+ <div class="container">
+  <h2>Current temperature values:</h2>                                        
+  <table id="overviewTable" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Daten</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id='name4'> </td>
+        <td id='data4'> </td>
+      </tr>
+    </tbody>
+  </table>
+</div> 
+<script>    
 
-var dps = []; // dataPoints
-var chart = new CanvasJS.Chart("chartContainer", {
-	title :{
-		text: "Wachstum" 
-	},
-	axisY: {
-		includeZero: true
-	},      
-	data: [{
-		type: "line",
-		dataPoints: dps
-	}]
-});
+    setInterval(function() {
+        addnewData(new Date().toLocaleTimeString(),displayData[4].replace("°C",""),96,5);
+    }, 1000); 
+    
+    setInterval(updateTable,1000);
 
-var xVal = 0;
-var yVal = 100; 
-var updateInterval = 1000;
-var dataLength = 15; // number of dataPoints visible at any point
+    function updateTable(start,length){
+     for(i=4;i<5;i++){
+        document.getElementById('name'+i).innerHTML = displayNames[i];
+        document.getElementById('data'+i).innerHTML = displayData[i];
+        }
+    }
 
-var updateChart = function (count) {
-
-	count = count || 1;
-
-	for (var j = 0; j < count; j++) {
-		yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-		dps.push({
-			x: xVal,
-			y: yVal
-		});
-		xVal++;
-	}
-
-	if (dps.length > dataLength) {
-		dps.shift();
-	}
-
-	chart.render();
-};
-
-updateChart(dataLength);
-setInterval(function(){updateChart()}, updateInterval);
-
-}
 </script>
-<body>
-<div id="chartContainer" style="height: 370px; width:100%; margin-top:10%; margin-bottom:10%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<div class="chart-container" style="position:relative; margin:auto;height:300px ">
+    <canvas id="myChart"></canvas>
+</div>
+<script src="chartsjs.js"></script>
+<script>
+config.data.datasets[0].label="Temperatur in Grad Celcius";
+config.data.datasets[0].backgroundColor= 'rgb(255, 99, 132)';
+config.data.datasets[0].borderColor= 'rgb(255, 99, 132)';
+</script>
 </body>
 </html>
 	
