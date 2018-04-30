@@ -80,53 +80,73 @@
 	
 	
 <html>
-<script>
-window.onload = function () {
+ <div class="container">
+  <h2>Current humidity values:</h2>                                        
+  <table id="overviewTable" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Daten</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id='name5'>1</td>
+        <td id='data5'>Test</td>
+      </tr>
+      <tr>
+        <td id='name6'>2</td>
+        <td id='data6'>Test</td>
+      </tr>
+    </tbody>
+  </table>
+</div> 
+<script>    
+    setallPublishers(sendingNames,sendingData);
+    setallSubscribers(receivingNames,receivingData);
 
-var dps = []; // dataPoints
-var chart = new CanvasJS.Chart("chartContainer", {
-	title :{
-		text: "Luftfeuchtigkeit" 
-	},
-	axisY: {
-		includeZero: true
-	},      
-	data: [{
-		type: "line",
-		dataPoints: dps
-	}]
-});
+    setInterval(function() {
+        addnewData(new Date().toLocaleTimeString(),displayData[5].replace("%",""),7,1);
+    }, 1000); //Einmal am Tag 
+    
+    setInterval(updateTable,1000);
 
-var xVal = 0;
-var yVal = 100; 
-var updateInterval = 1000;
-var dataLength = 15; // number of dataPoints visible at any point
-
-var updateChart = function (count) {
-
-	count = count || 1;
-
-	for (var j = 0; j < count; j++) {
-		yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
-		dps.push({
-			x: xVal,
-			y: yVal
-		});
-		xVal++;
-	}
-
-	if (dps.length > dataLength) {
-		dps.shift();
-	}
-
-	chart.render();
-};
-
-updateChart(dataLength);
-setInterval(function(){updateChart()}, updateInterval);
-
-}
+    function updateTable(start,length){
+     for(i=5;i<7;i++){
+        document.getElementById('name'+i).innerHTML = displayNames[i];
+        document.getElementById('data'+i).innerHTML = displayData[i];
+        }
+    }
+    
+    var fanswitch=0;
+    function fanSwap(){
+        if(fanswitch==0){
+            document.getElementById("fanswap").innerHTML="Ventilator an";
+            fanswitch++;
+            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "On");
+            displayData[6]="On";
+        }else{
+            document.getElementById("fanswap").innerHTML="Ventilator aus";
+            fanswitch--;
+            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "Off");
+            displayData[6]="Off";
+        }
+    }
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<div class="chart-container" style="position:relative; margin:auto;height:300px ">
+    <canvas id="myChart"></canvas>
+</div>
+<script src="chartsjs.js"></script>
+<script>
+config.data.datasets[0].label="Luftfeuchtigkeit in %";
+config.data.datasets[0].backgroundColor= 'rgb(135,206,250)';
+config.data.datasets[0].borderColor= 'rgb(135,206,250)';
+</script>
+<button type="button" id="fanswap" class="btn btn-primary" data-toggle="button" style=" display: block; margin:auto" onclick="fanSwap()">
+    Ventilator aus
+</button>
 <body>
 <div id="chartContainer" style="height: 370px; width:100%; margin-top:10%; margin-bottom:10%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
