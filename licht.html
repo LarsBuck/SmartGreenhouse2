@@ -119,8 +119,6 @@
   </table>
 </div> 
 <script>    
-    setallSubscribers(displayNames,displayData);
-
     setInterval(function() {
         addnewData(new Date().toLocaleTimeString(),displayData[2].replace(" Lumen",""),96,5);
     }, 1000); 
@@ -161,9 +159,10 @@ config.data.datasets[0].label="Lichtlevel in Lumen";
 config.data.datasets[0].backgroundColor= 'rgb(255, 215, 0)';
 config.data.datasets[0].borderColor= 'rgb(255, 215, 0)';
 </script>
-<button type="button" id="lightswap" class="btn btn-p
-  Licht aus
-</button>				    
+<button type="button" id="lightswap" class="btn btn-primary" data-toggle="button" style=" display: block; margin:auto" onclick="lightSwap()">
+    Licht aus
+</button>
+				    
 </html>
 	
 	
