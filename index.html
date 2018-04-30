@@ -121,10 +121,9 @@
 }
 </style>
 <body>
- <div class="container">
-  <h2>     </h2>
-  <p>     </p>        
-  <table id="overviewTable" class="table table-striped table-bordered table-hover table-condensed">
+  <div class="container">
+  <h2>Overview for all target and measurement values:</h2>                                        
+  <table id="overviewTable" class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
         <th>Name</th>
@@ -133,54 +132,57 @@
     </thead>
     <tbody>
       <tr>
-        <td id='name0'>1</td>
+        <td id='name0'>0</td>
         <td id='data0'>Test</td>
       </tr>
       <tr>
-        <td id='name1'>2</td>
+        <td id='name1'>1</td>
         <td id='data1'>Test</td>
       </tr>
       <tr>
-        <td id='name2'>3</td>
+        <td id='name2'>2</td>
         <td id='data2'>Test</td>
       </tr>
       <tr>
-        <td id='name3'>4</td>
+        <td id='name3'>3</td>
         <td id='data3'>Test</td>
+      </tr>
+      <tr>
+        <td id='name4'>4</td>
+        <td id='data4'>Test</td>
+      </tr>
+      <tr>
+        <td id='name5'>5</td>
+        <td id='data5'>Test</td>
+      </tr>
+      <tr>
+        <td id='name6'>6</td>
+        <td id='data6'>Test</td>
+      </tr>
+      <tr>
+        <td id='name7'>7</td>
+        <td id='data7'>Test</td>
       </tr>
 
     </tbody>
   </table>
 </div> 
+<script>    //MQTT
+    setInterval(function() {
+        sendingData[0]=Math.floor((Math.random() * 100) + 1).toString(); //Test für Graphen
+        addnewData(new Date().toLocaleTimeString(),receivingData[0],96,4);
+    }, 1000); 
+    
+    setInterval(updateTable,1000);
 
-   <script>
-        
-     var client = mqtt.connect('wss://7ab8d043:4acf899e28d7740c@broker.shiftr.io:443', { //Wichtig wss und port! Sonst keine sichere Verbindung im Browser
-      clientId: 'greenhouse-webapp'
-     });
- 
-     client.on('connect', function(){
-       console.log('client has connected!');
-     });
-    
-    
-     var sendingNames = ["LightStart","LightStop","dry","humid"];
-     //var receivingNames = ["Light","pumpDelay","Temperature","SoilMoistureContent"];
-     var receivingNames  = ["LightStart","LightStop","dry","humid"]; //Nur Test!!
-     var sendingData = ["10 Lumen","Test","2°C","2%","5%"];
-     var receivingData = new Array(receivingNames.length);  
-    
-     //setallPublishers(sendingNames,sendingData);
-     setallSubscribers(receivingNames,receivingData);
-
-     function updateTable(){
-         for(i=0;i<4;i++){
-            document.getElementById('name'+i).innerHTML = receivingNames[i];
-            document.getElementById('data'+i).innerHTML = receivingData[i];
+    function updateTable(start,length){
+     for(i=0;i<7;i++){
+        document.getElementById('name'+i).innerHTML = displayNames[i];
+        document.getElementById('data'+i).innerHTML = displayData[i];
         }
     }
     
-   </script>
+</script>
 
 </body>
 
