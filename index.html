@@ -188,16 +188,11 @@
   </table>
 </div> 
 <script>    //MQTT	
-	
-    setInterval(function() {
-        sendingData[0]=Math.floor((Math.random() * 100) + 1).toString(); //Test für Graphen
-        addnewData(new Date().toLocaleTimeString(),receivingData[0],96,4);
-    }, 1000); 
     
     setInterval(updateTable,1000);
 
     function updateTable(start,length){
-     for(i=0;i<10;i++){
+     for(i=0;i<11;i++){
         document.getElementById('name'+i).innerHTML = displayNames[i];
         document.getElementById('data'+i).innerHTML = displayData[i];
         }
