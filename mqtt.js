@@ -6,15 +6,13 @@ client.on('connect', function(){
    console.log('client has connected!');
 });
     
+setallSubscribers(displayNames,displayData);
 
+//Test Daten
 var displayNames=["Lightstarttime","Lightstoptime","Lightlevel","LightSwitch","Temperature","Air-humidity","FanSwitch","Soil-humidity","dry target value","humid target value","PumpSwitch"];
 var displayData=["10 uhr","20 uhr","20 Lumen","Off","20°C","60%","Off","50%","70%","60%","Off"]; 
     
-var sendingNames = ["LightStart","LightStop","dry","humid","LightSwitch","PumpSwitch"];
-//var receivingNames = ["Light","pumpDelay","Temperature","Humiditiy","SoilMoistureContent"];
-var receivingNames  = ["LightStart","LightStop","dry","humid"]; //Nur Test!!
-var sendingData = ["10","Testwert","2°C","2%","5%"];
-var receivingData = new Array(receivingNames.length);  
+
 
 function setallSubscribers(names,data){
  client.on('message', function(topic, message) {
