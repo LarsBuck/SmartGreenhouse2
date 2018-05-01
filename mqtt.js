@@ -27,7 +27,6 @@ function setallSubscribers(names,data){
     } 
 }
 
-setallSubscribers(displayNames,displayData);
 
 function setallPublishers(names,data){    
    setInterval(function(){
