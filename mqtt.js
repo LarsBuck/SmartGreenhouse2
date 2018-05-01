@@ -5,15 +5,13 @@ var client = mqtt.connect('wss://7ab8d043:4acf899e28d7740c@broker.shiftr.io:443'
 client.on('connect', function(){
    console.log('client has connected!');
 });
-    
-setallSubscribers(displayNames,displayData);
 
 //Test Daten
 var displayNames=["Lightstarttime","Lightstoptime","Lightlevel","LightSwitch","Temperature","Air-humidity","FanSwitch","Soil-humidity","dry target value","humid target value","PumpSwitch"];
 var displayData=["10 uhr","20 uhr","20 Lumen","Off","20°C","60%","Off","50%","70%","60%","Off"]; 
+
+setallSubscribers(displayNames,displayData);
     
-
-
 function setallSubscribers(names,data){
  client.on('message', function(topic, message) {
         for(i=0;i<names.length;i++){
