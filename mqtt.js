@@ -29,6 +29,8 @@ function setallSubscribers(names,data){
     } 
 }
 
+setallSubscribers(displayNames,displayData);
+
 //Die Funktion sendet jede Sekunde über alle im names Array spezifizierten Kanäle.
 //Gesendet werden hierbei die korrespondierenden Daten im data Array.
 function setallPublishers(names,data){    
