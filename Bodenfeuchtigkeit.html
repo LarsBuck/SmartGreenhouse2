@@ -136,13 +136,13 @@
         if(pumpswitch==0){
             document.getElementById("pumpswap").innerHTML="Pumpe an";
             pumpswitch++;
-            client.publish('/smartGreenhouse/Sollwerte/PumpSwitch', "On");
-            displayData[10]="On";
+            client.publish('/smartGreenhouse/Sollwerte/PumpSwitch', "HIGH");
+            displayData[10]="HIGH";
         }else{
             document.getElementById("pumpswap").innerHTML="Pumpe aus";
             pumpswitch--;
-            client.publish('/smartGreenhouse/Sollwerte/PumpSwitch', "Off");
-            displayData[10]="Off";
+            client.publish('/smartGreenhouse/Sollwerte/PumpSwitch', "LOW");
+            displayData[10]="LOW";
         }
     }
 </script>
