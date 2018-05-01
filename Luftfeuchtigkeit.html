@@ -126,13 +126,13 @@
         if(fanswitch==0){
             document.getElementById("fanswap").innerHTML="Ventilator an";
             fanswitch++;
-            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "On");
-            displayData[6]="On";
+            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "HIGH");
+            displayData[6]="HIGH";
         }else{
             document.getElementById("fanswap").innerHTML="Ventilator aus";
             fanswitch--;
-            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "Off");
-            displayData[6]="Off";
+            client.publish('/smartGreenhouse/Sollwerte/FanSwitch', "LOW");
+            displayData[6]="LOW";
         }
     }
 </script>
