@@ -6,8 +6,8 @@ client.on('connect', function(){
    console.log('client has connected!');
 });
 
-//Test Daten
-var displayNames=["Lightstarttime","Lightstoptime","Lightlevel","LightSwitch","Temperature","Air-humidity","FanSwitch","Soil-humidity","dry target value","humid target value","PumpSwitch"];
+//Array mit allen kommunizierten Daten und ihren Namen(wichtig keine Leerezichen im Namen!)
+var displayNames=["LightStartTime","LightStopTime","LightLevel","LightSwitch","Temperature","AirHumidity","FanSwitch","SoilHumidity","DryTargetValue","HumidTargetValue","PumpSwitch"]; 
 var displayData=["10 uhr","20 uhr","20 Lumen","Off","20°C","60%","Off","50%","70%","60%","Off"]; 
 
     
