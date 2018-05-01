@@ -10,9 +10,9 @@ client.on('connect', function(){
 //Array mit allen kommunizierten Daten und ihren Namen(wichtig keine Leerezichen im Namen!)
 var displayNames=["LightStartTime","LightStopTime","LightLevel","LightSwitch","Temperature","AirHumidity","FanSwitch","SoilHumidity","DryTargetValue","HumidTargetValue","PumpSwitch"]; 
 var displayData=new Array(11);
-displayData[3]="HIGH";
-displayData[6]="HIGH";
-displayData[10]="HIGH";
+displayData[3]="LOW";
+displayData[6]="LOW";
+displayData[10]="LOW";
 
 //Die Funktion abonniert alle im names Array spezifizierten Kanäle und speichert alle über diese Kanäle
 //empfangenen Daten in den korrespondierenden Stellen im data Array und gibt die Daten in die Konsole aus.
