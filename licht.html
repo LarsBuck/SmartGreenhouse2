@@ -164,9 +164,24 @@ config.data.datasets[0].label="Lichtlevel in Lumen";
 config.data.datasets[0].backgroundColor= 'rgb(255, 215, 0)';
 config.data.datasets[0].borderColor= 'rgb(255, 215, 0)';
 </script>
+<script> //Sollwerte eintragen
+$(document).ready(function(){
+    $("button").click(function(){
+        displayData[0]=document.getElementById('lat').value+" Uhr"
+		displayData[1]=document.getElementById('lot').value+" Uhr";
+    });
+});
+
+</script>
+<div>
+
 <button type="button" id="lightswap" class="btn btn-primary" data-toggle="button" style=" display: block; margin:auto;margin-top:20px;margin-bottom:20px" onclick="lightSwap()">
     Licht aus
 </button>
+<h2 style="text-align:center;margin-top:20px">Set LightStartTime<input type="text" id="lat" style="display: block; margin:auto"></p>
+<h2 style="text-align:center;margin-top:20px">Set LightStopTime <input type="text"  id="lot" style="display: block; margin:auto"></p>
+<button class="btn btn-primary" style=" display: block; margin:auto;margin-top:20px">Submit</button>
+</div>
 
 </body>	
 </html>
