@@ -1,21 +1,21 @@
-//chart
+//Grapheneinstellungen
 var config = {
-    // The type of chart we want to create
+    // Typ des Graphen, in unserem Fall ein Linien bzw. Kurvendiagramm
     type: 'line',
 
-    // The data for our dataset
+    // Daten des Graphen
     data: {
-        labels: [],
+        labels: [], //Datenbeschriftung and der X-Achse
         datasets: [{
-            data: [],
+            data: [], //Datenpunkte, zum Zeitpunkt der Graphenerstellung noch leer
         }]
     },
 
-    // Configuration options go here
+    // Konfigurationsoptionen
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        layout: {
+        maintainAspectRatio: false, //Wichtig um die Größe bei Html bearbeiten zu können
+        layout: { //Position auf der Website, bzw Abstand zum Rand
             padding: {
                 left: 50,
                 right: 100,
@@ -25,14 +25,15 @@ var config = {
         }
     }
 };
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('myChart').getContext('2d'); //dem Chart 'myChart' werden die Einstellungen zugeordnet
 var chart = new Chart(ctx, config);
+
 var hourcounter = 1;
-function addnewData(label,dataPoint,maxdisplayed,steps){
-    if(config.data.datasets[0].data.length>=maxdisplayed){ //Begrenzen auf die letzten 100 Messwerte
-        config.data.labels.splice(0, 1); // remove first label
+function addnewData(label,dataPoint,maxdisplayed,steps){ 
+    if(config.data.datasets[0].data.length>=maxdisplayed){ //Begrenzen auf die letzten 100 Messwerte, der letzte wird beim hinzufügen eines Neuen gelöscht
+        config.data.labels.splice(0, 1); // ersten Label entfernen
         config.data.datasets.forEach(function(dataset) {
-        dataset.data.splice(0, 1); // remove first data point
+        dataset.data.splice(0, 1); // ersten Datenpunkt entfernen
     });    
         chart.update();
     }
