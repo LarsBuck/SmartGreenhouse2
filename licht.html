@@ -143,13 +143,13 @@
         if(lightswitch==0){
             document.getElementById("lightswap").innerHTML="Licht an";
             lightswitch++;
-            client.publish('/smartGreenhouse/Sollwerte/LightSwitch', "On");
+            client.publish('/smartGreenhouse/Sollwerte/LightSwitch', "HIGH");
             displayData[3]="On";
         }else{
             document.getElementById("lightswap").innerHTML="Licht aus";
             lightswitch--;
-            client.publish('/smartGreenhouse/Sollwerte/LightSwitch', "Off");
-            displayData[3]="Off";
+            client.publish('/smartGreenhouse/Sollwerte/LightSwitch', "LOW");
+            displayData[3]="LOW";
         }
     }
 </script>
