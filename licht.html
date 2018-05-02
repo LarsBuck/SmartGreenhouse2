@@ -169,7 +169,9 @@ config.data.datasets[0].borderColor= 'rgb(255, 215, 0)';
 $(document).ready(function(){
     $("button").click(function(){
         displayData[0]=document.getElementById('lat').value+" Uhr"
-		displayData[1]=document.getElementById('lot').value+" Uhr";
+	client.publish('/smartGreenhouse/Sollwerte/LightStartTime', displayData[0]);
+	displayData[1]=document.getElementById('lot').value+" Uhr";
+	client.publish('/smartGreenhouse/Sollwerte/LightStopTime', displayData[1];
     });
 });
 
