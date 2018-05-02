@@ -19,7 +19,7 @@ displayData[10]="LOW";
 function setallSubscribers(names,data){
  client.on('message', function(topic, message) {
         for(i=0;i<names.length;i++){
-            if(topic.toString()=="/smartGreenhouse/Sollwerte/"+names[i]){
+            if(topic.toString()=="/smartGreenhouse/"+names[i]){
             temp=('#tdata'+i).toString();
             $(temp).text(message.toString());
             data[i]=message.toString();
