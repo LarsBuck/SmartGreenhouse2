@@ -1,0 +1,87 @@
+---
+include:
+  - intents.yml
+  - slots.yml
+scenario:
+  invocation: 'smartGreenhouse'
+  name: 'smartGreenhouse'
+  locale: de_DE
+  category: EDUCATION_AND_REFERENCE
+  examplePhrases:
+    - 'Alexa, öffne smartGreenhouse'
+    - 'Alexa, öffne Gewächshausskill'
+    - 'Alexa, zeige mir die Daten'
+    - 'Alexa, erzähl mir von dem Gewächshaus'
+  steps:
+    - name: 'Initial Step'
+      entrypoint: true
+      actions:
+        - sendText: 'Sag mir welche Daten des Gewächshauses du abrufen möchtest'
+        - getInput:
+      next:
+        light: Light Request
+        humidity: Humidity Request
+        temperature: Temperature Request
+        help: Help
+        AMAZON.CancelIntent: Exit
+        AMAZON.StopIntent: Exit
+        AMAZON.HelpIntent: Help
+        
+    - name: Help
+      entrypoint: true
+      actions:
+        - sendText: 'Hilfe ist immer für dich da! Frage Alexa einfach nach Temperatur, Feuchtigkeit oder Helligkeit'
+        - getInput:
+      next:
+        light: Light Request
+        humidity: Humidity Request
+        temperature: Temperature Request
+        no_thanks: Exit
+        
+    - name: Temperature Request
+      entrypoint: true
+      actions:
+        - getUrl: 
+            url: ''
+        - setContext:
+            from: ''
+            to: value
+        - sendText: 'Im Gewächshaus sind es momentan'
+        - sendText: ' 25 '
+        - sendText: 'Grad Celcius'
+        - getInput:
+      next:
+        light: Light Request
+        humidity: Humidity Request
+        temperature: Temperature Request
+        help: Help
+        no_thanks: Exit
+        
+    - name: Light Request
+      entrypoint: true
+      actions:
+        - sendText: 'Im Gewächshaus sind es momentan 201 Lumen'
+        - getInput:
+      next:
+        light: Light Request
+        humidity: Humidity Request
+        temperature: Temperature Request
+        help: Help
+        no_thanks: Exit
+        
+    - name: Humidity Request
+      entrypoint: true
+      actions:
+        - sendText: 'Im Gewächshaus ist die Feuchtigkeit 40%'
+        - getInput:
+      next:
+        light: Light Request
+        humidity: Humidity Request
+        temperature: Temperature Request
+        help: Help
+        no_thanks: Exit
+        
+    - name: Exit
+      entrypoint: true
+      actions: 
+        - sendText: '<say-as interpret-as="interjection">{{ random(["arrivederci!", "bis bald!", "tschö!"]) }}</say-as>'
