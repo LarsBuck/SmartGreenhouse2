@@ -47,7 +47,6 @@ function setallPublishers(names,data){
 
 
 
-
 /*
 function setSubscriber(name){
  client.on('message', function(topic, message) {
