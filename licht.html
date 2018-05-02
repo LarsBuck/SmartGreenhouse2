@@ -166,14 +166,12 @@ config.data.datasets[0].backgroundColor= 'rgb(255, 215, 0)';
 config.data.datasets[0].borderColor= 'rgb(255, 215, 0)';
 </script>
 <script> //Sollwerte eintragen
-$(document).ready(function(){
-    $("button").click(function(){
+document.getElementById("submit").onclick = function(){
         displayData[0]=document.getElementById('lat').value+" Uhr"
 	client.publish('/smartGreenhouse/Sollwerte/LightStartTime', displayData[0]);
 	displayData[1]=document.getElementById('lot').value+" Uhr";
 	client.publish('/smartGreenhouse/Sollwerte/LightStopTime', displayData[1];
-    });
-});
+}
 
 </script>
 <div>
@@ -183,7 +181,7 @@ $(document).ready(function(){
 </button>
 <h2 style="text-align:center;margin-top:20px">Set LightStartTime<input type="text" onfocus="this.value=''" value="HH:MM:SS" id="lat" style="display: block; margin:auto"></p>
 <h2 style="text-align:center;margin-top:20px">Set LightStopTime <input type="text" onfocus="this.value=''" value="HH:MM:SS" id="lot" style="display: block; margin:auto"></p>
-<button class="btn btn-primary" style=" display: block; margin:auto;margin-top:20px">Submit</button>
+<button id="submit" class="btn btn-primary" style=" display: block; margin:auto;margin-top:20px">Submit</button>
 </div>
 
 </body>	
