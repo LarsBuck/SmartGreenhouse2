@@ -164,7 +164,9 @@ config.data.datasets[0].borderColor= 'rgb(58, 95, 205)';
 $(document).ready(function(){
     $("button").click(function(){
         displayData[9]=document.getElementById('dtv').value;
+	client.publish('/smartGreenhouse/Sollwerte/DryTargetValue', displayData[9]);
 	displayData[8]=document.getElementById('htv').value;	
+	client.publish('/smartGreenhouse/Sollwerte/HumidTargetValue', displayData[8]);
     });
 });
 
