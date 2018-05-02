@@ -28,7 +28,7 @@ function setallSubscribers(names,data){
         console.log(data);
  });
     for(i=0;i<names.length;i++){
-      client.subscribe('/smartGreenhouse/Sollwerte/'+names[i]);
+      client.subscribe('/smartGreenhouse/'+names[i]);
     } 
 }
 
