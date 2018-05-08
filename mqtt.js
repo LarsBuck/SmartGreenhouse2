@@ -8,7 +8,7 @@ client.on('connect', function(){
 });
 
 //Array mit allen kommunizierten Daten und ihren Namen(wichtig keine Leerezichen im Namen!)
-var displayNames=["LightStartTime","LightStopTime","LightLevel","LightSwitch","Temperature","AirHumidity","FanSwitch","SoilHumidity","DryTargetValue","HumidTargetValue","PumpSwitch"]; 
+var displayNames=["LightStartTime","LightStopTime","LightLevel","LightSwitch","TemperatureIn","AirHumidityIn","FanSwitch","SoilHumidity","DryTargetValue","HumidTargetValue","PumpSwitch","TemperatureOut","AirHumidityOut"]; 
 var displayData=new Array(11);
 displayData[3]="LOW";
 displayData[6]="LOW";
