@@ -145,7 +145,7 @@
             document.getElementById("lightswap").innerHTML="Licht an";
             lightswitch++;
             client.publish('/smartGreenhouse/Sollwerte/LightSwitch', "HIGH");
-            displayData[3]="On";
+            displayData[3]="HIGH";
         }else{
             document.getElementById("lightswap").innerHTML="Licht aus";
             lightswitch--;
