@@ -12,7 +12,7 @@ var displayNames=["LightStartTime","LightStopTime","LightLevel","LightSwitch","T
 var displayData=new Array(13);
 displayData[0]="08:00:00";
 displayData[1]="20:00:00";
-displayData[3]="Off";
+displayData[3]="LOW";
 displayData[6]="LOW";
 displayData[10]="LOW";
 
